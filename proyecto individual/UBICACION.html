@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obtener Ubicación en Tiempo Real</title>
+<script>
+function mostrarUbicacion() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(function(position) {
+      var latitud = position.coords.latitude;
+      var longitud = position.coords.longitude;
+      var precision = position.coords.accuracy;
+
+      document.getElementById("ubicacion").innerHTML = "Latitud: " + latitud + "<br>Longitud: " + longitud + "<br>Precisión: " + precision + " metros";
+    });
+  } else {
+    document.getElementById("ubicacion").innerHTML = "La geolocalización no es soportada por este navegador.";
+  }
+}
+</script>
+</head>
+<body onload="mostrarUbicacion()">
+  <h1>Mi Ubicación en Tiempo Real</h1>
+  <div id="ubicacion"></div>
+</body>
+</html>
